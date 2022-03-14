@@ -10,16 +10,18 @@ import re
 import pickle
 import numpy as np
 from scipy import stats
+import os
 
 
 MAX_NUM_WORDS = 1000
 MAX_SEQUENCE_LENGTH = 285
 DIALECTS = ['AE', 'BH', 'DZ', 'EG', 'IQ', 'JO', 'KW', 'LB', 'LY', 'MA', 'OM', 'PL', 'QA', 'SA', 'SD', 'SY', 'TN', 'YE']
+path = "Additional files"
 
 # loading
-loaded_model = load_model('DL_model.h5')
+loaded_model = load_model(os.path.join(path, 'DL_model.h5'))
 tokenizer = None
-with open('tokenizer.pickle', 'rb') as handle:
+with open(os.path.join(path, 'tokenizer.pickle'), 'rb') as handle:
     tokenizer = pickle.load(handle)
 
 app = FastAPI()
